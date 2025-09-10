@@ -1,17 +1,28 @@
--- Pls Donate — 100 Feature Rayfield Script (Fully Functional)
+-- Pls Donate — Fully Functional Rayfield GUI with Key System
 -- Author: You
--- Safe / cosmetic only
+-- Safe / Cosmetic Only
 
 -- Load Rayfield
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
--- Create Window
+-- Create Window with Key System
 local Window = Rayfield:CreateWindow({
-    Name = "Pls Donate OP GUI",
-    LoadingTitle = "Loading GUI...",
-    LoadingSubtitle = "By You",
+    Name = "Pls Donate GUI",
+    LoadingTitle = "Loading...",
+    LoadingSubtitle = "Safe Features",
     ConfigurationSaving = {Enabled=false},
-    KeySystem = false
+
+    -- Key System
+    KeySystem = true,
+    KeySettings = {
+        Title = "Pls Donate Key",
+        Subtitle = "Enter your key to access the GUI",
+        Note = "Get the key from the creator",
+        FileName = "PD_Key",
+        SaveKey = true,
+        GrabKeyFromSite = false, -- set true if you want online validation
+        Key = "faggot" -- The correct key
+    }
 })
 
 -- Tabs
@@ -19,7 +30,6 @@ local MovementTab = Window:CreateTab("Movement")
 local BoothTab = Window:CreateTab("Booth/Sign")
 local VisualsTab = Window:CreateTab("Visuals")
 local FunTab = Window:CreateTab("Fun")
-local ExtraTab = Window:CreateTab("Extra")
 
 -- References
 local player = game.Players.LocalPlayer
@@ -30,11 +40,11 @@ local UIS = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local StarterGui = game:GetService("StarterGui")
 
--- Runtime tables
+-- Runtime
 local runtime = {}
 
 -- =====================
--- Movement Features (20)
+-- Movement Features
 -- =====================
 MovementTab:CreateToggle({
     Name = "Infinite Jump",
@@ -87,6 +97,7 @@ MovementTab:CreateToggle({
     end
 })
 
+-- Teleport Buttons
 for i=1,3 do
     MovementTab:CreateButton({
         Name = "Teleport "..i,
@@ -116,7 +127,7 @@ MovementTab:CreateToggle({
     end
 })
 
--- Speed/Jump presets
+-- Speed/Jump Presets
 for _,v in pairs({50,100,150,200}) do
     MovementTab:CreateButton({Name="Speed "..v, Callback=function() humanoid.WalkSpeed=v end})
 end
@@ -124,12 +135,8 @@ for _,v in pairs({100,150,200,250}) do
     MovementTab:CreateButton({Name="Jump "..v, Callback=function() humanoid.JumpPower=v end})
 end
 
-for i=1,5 do
-    MovementTab:CreateToggle({Name="Movement Extra "..i, CurrentValue=false, Callback=function(Value) end})
-end
-
 -- =====================
--- Booth/Sign Features (20)
+-- Booth/Sign Features
 -- =====================
 BoothTab:CreateToggle({
     Name = "Auto Booth Messages",
@@ -179,10 +186,8 @@ for i,c in pairs({Color3.fromRGB(255,0,0),Color3.fromRGB(0,255,0),Color3.fromRGB
     end})
 end
 
-for i=1,15 do BoothTab:CreateToggle({Name="Booth Extra "..i, CurrentValue=false, Callback=function(Value) end}) end
-
 -- =====================
--- Visuals Features (20)
+-- Visuals Features
 -- =====================
 VisualsTab:CreateToggle({Name="Name Tag Glow", CurrentValue=false, Callback=function(Value)
     local head=character:FindFirstChild("Head")
@@ -227,10 +232,8 @@ VisualsTab:CreateToggle({Name="Rainbow Trails", CurrentValue=false, Callback=fun
     end
 end})
 
-for i=1,17 do VisualsTab:CreateToggle({Name="Visual Extra "..i, CurrentValue=false, Callback=function(Value) end}) end
-
 -- =====================
--- Fun Features (20)
+-- Fun Features
 -- =====================
 FunTab:CreateToggle({Name="Chat Auto-Messages", CurrentValue=false, Callback=function(Value)
     runtime.chatAuto=Value
@@ -258,11 +261,4 @@ FunTab:CreateToggle({Name="Local HUD", CurrentValue=false, Callback=function(Val
     end
 end})
 
-for i=1,18 do FunTab:CreateToggle({Name="Fun Extra "..i, CurrentValue=false, Callback=function(Value) end}) end
-
--- =====================
--- Extra Features (20)
--- =====================
-for i=1,20 do ExtraTab:CreateToggle({Name="Extra Feature "..i, CurrentValue=false, Callback=function(Value) end}) end
-
-print("✅ Pls Donate Rayfield GUI loaded with 100 fully interactive features!")
+print("✅ Pls Donate Rayfield GUI loaded! Key System enabled.")
